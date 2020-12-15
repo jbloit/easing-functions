@@ -7,6 +7,18 @@
 #define PI 3.1415926545
 #endif
 
+double identity( double t ) {
+    return  t ;
+}
+
+double one( double t ) {
+    return  1.0 ;
+}
+
+double zero( double t ) {
+    return  0.0 ;
+}
+
 double easeInSine( double t ) {
 	return sin( 1.5707963 * t );
 }
@@ -176,7 +188,10 @@ easingFunction getEasingFunction( easing_functions function )
 	static std::map< easing_functions, easingFunction > easingFunctions;
 	if( easingFunctions.empty() )
 	{
-		easingFunctions.insert( std::make_pair( EaseInSine, 	easeInSine ) );
+        easingFunctions.insert( std::make_pair( Identity,       identity ) );
+        easingFunctions.insert( std::make_pair( One,            one ) );
+        easingFunctions.insert( std::make_pair( Zero,           zero ) );
+        easingFunctions.insert( std::make_pair( EaseInSine,     easeInSine ) );
 		easingFunctions.insert( std::make_pair( EaseOutSine, 	easeOutSine ) );
 		easingFunctions.insert( std::make_pair( EaseInOutSine, 	easeInOutSine ) );
 		easingFunctions.insert( std::make_pair( EaseInQuad, 	easeInQuad ) );
